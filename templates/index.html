@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <form method="POST" action="{{ url_for('search') }}">
+        <input type="text" name="search" placeholder="Search for books...">
+        <button type="submit">Search</button>
+    </form>
+    
+    
+    <ul>
+        {% for book in books %}
+            <li onclick="showBookDetails({{ book.id }})">{{ book.title }} by {{ book.author }}</li>
+        {% endfor %}
+    </ul>
+    <div id="book-details" style="display: none;">
+        <!-- Book details will be loaded here dynamically -->
+    </div>
+    
+    <script src="static/js/app.js"></script>
+</body>
+</html>
